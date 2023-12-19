@@ -1,15 +1,19 @@
-export default function News() {
+export default function News(props) {
     return(
-        <div class="news">
-            <div class="news-img">
-                
+        <div className="news">
+            <div className="news-img">
+                <img src={props.article.urlToImage}/>
             </div>
             
-            <h1>News</h1>
+            <h1>{props.article.title}</h1>
 
-            <p>Random text will be here</p>
+            <p>{props.article.description?.substring(0,100).concat("....")}<a href={props.article.url} target="_blank">Read More</a></p>
 
-            <a href="#">read more..</a>
+        
+            <div className="source">
+                <p>Author : {props.article.author}</p>
+                <p>{props.article.source.name}</p>
+            </div>
         </div>
     )
 }
