@@ -1,6 +1,7 @@
 import './App.css';
 import { useEffect, useState } from 'react';
 import News from './News';
+import logo from './icon.png'
 function App() {
 
   let [articles,setArticles]=useState([]);
@@ -22,8 +23,9 @@ function App() {
     <div className="App">
 
       <header className="header">
-        <h1><span>News</span>Wave</h1>
-        <input type='text' placeholder='Search News'/>
+          <img src={logo} alt="Logo" />
+          <h1><span>News</span>Wave</h1>
+          <input type='text' placeholder='Search News'/>
       </header>
       
       <section className="news-articles">
