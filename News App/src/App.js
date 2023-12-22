@@ -23,12 +23,12 @@ function App() {
     <div className="App">
 
       <header className="header">
-          <img src={logo} alt="Logo" />
+          <img src={logo} alt="Logo" className="logo"/>
           <h1><span>News</span>Wave</h1>
           <input type='text' placeholder='Search News'/>
       </header>
-      
-      <section className="news-articles">
+
+      <section className="articles">
 
        {
         articles.map((article) => {
@@ -39,6 +39,18 @@ function App() {
        }
        
       </section>
+      
+      {/* <section className="news-articles">
+
+       {
+        articles.map((article) => {
+          return(
+            <News article={article}/>
+          )
+        })
+       }
+       
+      </section> */}
       
     </div>
   );
