@@ -5,9 +5,10 @@ import logo from './icon.png'
 function App() {
 
   let [articles,setArticles]=useState([]);
+  let [category,setCategory]=useState("india");
 
   useEffect(()=>{
-    fetch("https://newsapi.org/v2/everything?q=india&from=2023-12-16&apiKey=50adc61efba64530bec2771397767952")
+    fetch(`https://newsapi.org/v2/everything?q=${category}&from=2023-12-16&apiKey=50adc61efba64530bec2771397767952`)
     .then((response)=>response.json())
     .then((news)=>{
       setArticles(news.articles);
@@ -16,7 +17,7 @@ function App() {
     .catch((err)=>{
       console.log(err);
     })
-  },[])
+  },[category])
 
 
   return (
@@ -25,33 +26,30 @@ function App() {
       <header className="header">
           <img src={logo} alt="Logo" className="logo"/>
           <h1><span>News</span>Wave</h1>
-          <input type='text' placeholder='Search News'/>
+          <input type='text' onChange={(event)=>{
+            if(event.target.value!==""){
+              setCategory(event.target.value);
+            }
+            else{
+              setCategory("india");
+            }
+            
+          }} placeholder='Search News'/>
       </header>
 
       <section className="articles">
 
        {
-        articles.map((article) => {
+          articles.length!==0?
+          articles.map((article) => {
           return(
             <News article={article}/>
           )
-        })
+          })
+          :<h3>No News Found For Searched Text</h3>
        }
        
-      </section>
-      
-      {/* <section className="news-articles">
-
-       {
-        articles.map((article) => {
-          return(
-            <News article={article}/>
-          )
-        })
-       }
-       
-      </section> */}
-      
+      </section> 
     </div>
   );
 }
