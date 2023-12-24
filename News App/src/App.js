@@ -6,9 +6,10 @@ function App() {
 
   let [articles,setArticles]=useState([]);
   let [category,setCategory]=useState("india");
+  let [date,setDate]=useState("");
 
   useEffect(()=>{
-    fetch(`https://newsapi.org/v2/everything?q=${category}&from=2023-12-16&apiKey=50adc61efba64530bec2771397767952`)
+    fetch(`https://newsapi.org/v2/everything?q=${category}&from=${date}&apiKey=50adc61efba64530bec2771397767952`)
     .then((response)=>response.json())
     .then((news)=>{
       setArticles(news.articles);
@@ -17,15 +18,28 @@ function App() {
     .catch((err)=>{
       console.log(err);
     })
-  },[category])
+  },[category,date])
 
 
   return (
     <div className="App">
 
       <header className="header">
+        <div className='header-logo'>
           <img src={logo} alt="Logo" className="logo"/>
           <h1><span>News</span>Wave</h1>
+        </div>
+        <div className='inputs-fields'>
+          <input type='text' onChange={(event)=>{
+            if(event.target.value!==""){
+              setDate(event.target.value);
+            }
+            else{
+              setDate("2023-12-24");
+            }
+          }}
+           placeholder='YYYY-MM-DD'/>
+
           <input type='text' onChange={(event)=>{
             if(event.target.value!==""){
               setCategory(event.target.value);
@@ -35,6 +49,8 @@ function App() {
             }
             
           }} placeholder='Search News'/>
+        </div>
+          
       </header>
 
       <section className="articles">
@@ -46,7 +62,8 @@ function App() {
             <News article={article}/>
           )
           })
-          :<h3>No News Found For Searched Text</h3>
+          :
+          <h3>No News Found For Searched Text</h3>
        }
        
       </section> 
