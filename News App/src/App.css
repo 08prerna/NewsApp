@@ -47,9 +47,10 @@ input {
     width: 25%;
     padding: 10px;
     font-size: 17px;
-    border-radius: 5px;
+    border-radius: 22px;
     outline: none;
-    border: 1px solid black;
+    border: 2px solid black;
+    text-align: center;
 }
 
 
