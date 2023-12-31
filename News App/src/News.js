@@ -2,7 +2,14 @@ export default function News(props) {
     return(
 
         <article>
-            <figure><img src={props.article.urlToImage}/></figure>
+            <figure>
+                {
+                    props.article.urlToImage!==null?
+                    <img src={props.article.urlToImage}/>:
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Image_not_available.png/800px-Image_not_available.png?20210219185637"/>
+
+                }
+            </figure>
             
             <div className="article-preview">
                 <h2>{props.article.title}</h2>

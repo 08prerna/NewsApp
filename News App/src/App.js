@@ -1,7 +1,10 @@
 import './App.css';
 import { useEffect, useState } from 'react';
 import News from './News';
-import logo from './icon.png'
+import logo from './icon.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+
 function App() {
 
   let [articles,setArticles]=useState([]);
@@ -48,7 +51,8 @@ function App() {
               setCategory("india");
             }
             
-          }} placeholder='Search News'/>
+          }}  placeholder='Search News'/>
+          
         </div>
           
       </header>
