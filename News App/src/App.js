@@ -9,7 +9,7 @@ function App() {
 
   let [articles,setArticles]=useState([]);
   let [category,setCategory]=useState("india");
-  let [date,setDate]=useState("");
+  //let [date,setDate]=useState("");
 
   useEffect(()=>{
     fetch(`https://newsapi.org/v2/everything?q=${category}&from=${date}&apiKey=50adc61efba64530bec2771397767952`)
@@ -21,7 +21,7 @@ function App() {
     .catch((err)=>{
       console.log(err);
     })
-  },[category,date])
+  },[category])
 
 
   return (
@@ -33,7 +33,7 @@ function App() {
           <h1><span>News</span>Wave</h1>
         </div>
         <div className='inputs-fields'>
-          <input type='text' onChange={(event)=>{
+         /* <input type='text' onChange={(event)=>{
             if(event.target.value!==""){
               setDate(event.target.value);
             }
@@ -42,6 +42,7 @@ function App() {
             }
           }}
            placeholder='YYYY-MM-DD'/>
+          */
 
           <input type='text' onChange={(event)=>{
             if(event.target.value!==""){
