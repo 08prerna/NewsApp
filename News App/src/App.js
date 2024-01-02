@@ -2,17 +2,15 @@ import './App.css';
 import { useEffect, useState } from 'react';
 import News from './News';
 import logo from './icon.png';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 
 function App() {
 
   let [articles,setArticles]=useState([]);
   let [category,setCategory]=useState("india");
-  //let [date,setDate]=useState("");
+  // let [date,setDate]=useState("");
 
   useEffect(()=>{
-    fetch(`https://newsapi.org/v2/everything?q=${category}&from=${date}&apiKey=50adc61efba64530bec2771397767952`)
+    fetch(`https://newsapi.org/v2/everything?q=${category}&from=2024-01-01&apiKey=50adc61efba64530bec2771397767952`)
     .then((response)=>response.json())
     .then((news)=>{
       setArticles(news.articles);
@@ -33,7 +31,7 @@ function App() {
           <h1><span>News</span>Wave</h1>
         </div>
         <div className='inputs-fields'>
-         /* <input type='text' onChange={(event)=>{
+          {/* <input type='text' onChange={(event)=>{
             if(event.target.value!==""){
               setDate(event.target.value);
             }
@@ -41,8 +39,7 @@ function App() {
               setDate("2023-12-24");
             }
           }}
-           placeholder='YYYY-MM-DD'/>
-          */
+           placeholder='YYYY-MM-DD'/> */}
 
           <input type='text' onChange={(event)=>{
             if(event.target.value!==""){
